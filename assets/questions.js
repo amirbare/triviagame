@@ -1,3 +1,4 @@
+
 function Quiz(questions) {
     this.score = 0;
     this.questions = questions;
@@ -77,15 +78,84 @@ function showScores() {
  
 // create questions here
 var questions = [
-    new Question("Hyper Text Markup Language Stand For?", ["JavaScript", "XHTML","CSS", "HTML"], "HTML"),
-    new Question("Which language is used for styling web pages?", ["HTML", "JQuery", "CSS", "XML"], "CSS"),
-    new Question("Which is not a JavaScript Framework?", ["Python Script", "JQuery","Django", "NodeJS"], "Django"),
-    new Question("Which is used for Connect To Database?", ["PHP", "HTML", "JS", "All"], "PHP"),
-    new Question("Webdevtrick.com is about..", ["Web Design", "Graphic Design", "SEO & Development", "All"], "All")
+    new Question("What is the capital of the USA?", ["New York", "Washington D.C.","Chicago", "Los Angeles"], "Washington D.C."),
+    new Question("What is the capital of China?", ["Beijing", "Shanghai", "Tianjin", "Hong Kong"], "Beijing"),
+    new Question("What is the capital of Brazil?", ["São Paulo", "Rio de Janeiro","	Brasília", "Salvador"], "Brasilia"),
+    new Question("What is the capital of India?", ["Mumbai", "New Delhi", "Hyderabad", "Jaipur"], "Mumbai"),
+    new Question("What is the capital of Russia", ["Moscow", "St Petersburg", "Kazan", "Sochi"], "Moscow")
 ];
  
 // create quiz
 var quiz = new Quiz(questions);
  
 // display quiz
-populate();
+
+
+
+
+
+
+
+window.onload = function () {
+    start();
+  }
+
+  var intervalId;
+  var clockRunning = false;
+  var time = 0;
+  var lap = 1;
+
+
+
+  function start() {
+
+    //  TODO: Use setInterval to start the count here and set the clock to running.
+    if (!clockRunning) {
+      intervalId = setInterval(count, 1000);
+      clockRunning = true;
+    }
+
+
+
+  }
+
+  function count() {
+    //  TODO: increment time by 1, remember we cant use "this" here.
+    time++;
+    //  TODO: Get the current time, pass that into the timeConverter function,
+    //        and save the result in a variable.
+    var currentTime = timeConverter(time);
+    //  TODO: Use the variable you just created to show the converted time in the "display" div.
+    $("#display").text(currentTime);
+  }
+
+
+
+  var seconds;
+
+  function timeConverter(t) {
+
+    var minutes = Math.floor(t / 60);
+     seconds = t - (minutes * 60);
+
+    if (seconds < 15) {
+      seconds = "0" + seconds;
+      populate();
+
+    }
+    else
+    {
+      seconds = "Times Up";
+
+      showScores();
+     
+
+
+    }
+
+
+
+
+    return seconds;
+  }
+

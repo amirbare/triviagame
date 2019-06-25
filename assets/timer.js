@@ -45,7 +45,7 @@ window.onload = function () {
     }
     else
     {
-      seconds = "Times Up" ;
+      seconds = "Times Up";
 
     }
 
